@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE学习</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<p>{{foo}}</p>
+		<button @click="foo='par'">点击我也不能改变p的值</button>
+	</div>
+
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript">
+        // var data={a:1};
+
+		// var vm=new Vue({
+		// 	el:'#app',
+		// 	data:data,
+		// 	methods:{
+				
+		// 	}
+		// });
+  //       vm.a=2;
+  //       data.a=2;
+        //以上两种方法都能让a的值发生改变
+        // vm.b='hi';
+        //上面这个新添加的属性不会触发任何视图的更新
+
+  //       data: {
+		//   newTodoText: '',
+		//   visitCount: 0,
+		//   hideCompletedTodos: false,
+		//   todos: [],
+		//   error: null
+		// }
+        //如果晚些时候需要一个属性，可以用上面方法进行预设
+
+        var obj={foo:'bar'};
+
+        Object.freeze(obj);
+        // obj被冻结，不允许改变
+        new Vue({
+        	el:'#app',
+            data:obj,
+            created:function(){
+            	console.log('a is :'+this.foo)
+            }
+        });
+
+        //create的函数是在vue实例化时执行
+
+		// alert(data.a);
+	</script>
+</body>
+</html>

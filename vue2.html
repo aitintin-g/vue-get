@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE学习</title>
+	<style>
+		span{
+			width:100px;
+			height:100px;
+			display:block;
+			background:pink;
+			margin:20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div>
+			{{message}}
+		</div>
+		<span v-bind:title="message"></span>
+		<span v-if="seen">你看到我了</span>
+		<ol>
+			<li v-for="todo in todos">{{todo.text}}</li>
+		</ol>
+		<p>{{message}}</p>
+		<button type="" @click="reverseMessage">逆转mesage</button>
+		<todo-item></todo-item>
+		<todo-itemf v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-itemf>
+	</div>
+
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript">
+        Vue.component('todo-item',{
+        	template:'<li>这是个代办事项</li>'
+        })
+
+        Vue.component('todo-itemf',{
+        	props:['todo'],
+        	template:'<li>{{todo.text}}</li>'
+        })	
+
+		var app=new Vue({
+			el:'#app',
+			data:{
+				message:'hello world!',
+				seen:true,
+				todos:[
+                  {text:'学习vue框架'},
+                  {text:'从零开始'},
+                  {text:'做个小项目'}
+				],
+			groceryList:[
+                  {id:0,text:'蔬菜'},
+                  {id:1,text:'面包'},
+                  {id:2,text:'果酱'}
+				]
+			},
+			methods:{
+				reverseMessage:function(){
+					this.message=this.message.split('').reverse().join('')
+				}
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE学习</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h1 v-if="ok">Yes</h1>
+        <h1 v-else>No</h1>
+        <!-- 因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素。
+        <template v-if="ok">
+          <h1>Title</h1>
+          <p>Paragraph 1</p>
+          <p>Paragraph 2</p>
+        </template>
+         -->
+         <h1 v-show="ok"></h1>
+
+	</div>
+
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript">
+       vm=new Vue({
+        	el:'#app',
+        	data:{
+        		message:'Hello world!',
+                ok:true
+        	}
+        });
+        console.log(vm.reversedMessage);
+	</script>
+</body>
+</html>
